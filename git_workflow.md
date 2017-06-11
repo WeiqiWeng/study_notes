@@ -25,5 +25,19 @@ Each shell does the corresponding work:
 
 ## Update the Project
 
-If we want to update the project, such as adding new feature or fixing a bug, the better practice would be create a new local branch and merge to master at last.
+If we want to update the project, such as adding new feature or fixing a bug, the better practice would be create a new local branch and merge to *master* at last. In this way, the version in branch *master* is not affected when doing update.
+
+The following commands create a new branch and switch to it.
+```sh
+git branch update_the_project
+git checkout update_the_project
+```
+
+Then we may do updates in this branch and upload to remote repository. Before this, remember to set upper stream to the current branch. Here we still set *origin* as the up stream of branch *update_the_project*.
+```sh
+## in branch update_the_project
+git add .
+git commit -m "write new section for update the project"
+git push --set-upstream origin update_the_project
+```
 
