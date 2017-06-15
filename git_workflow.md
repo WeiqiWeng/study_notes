@@ -25,7 +25,7 @@ Each shell does the corresponding work:
 
 ## Update the Project
 
-If we want to update the project, such as adding new feature or fixing a bug, the better practice would be create a new local branch and merge to *master* at last. In this way, the version in branch *master* is not affected when doing update.
+If we want to update the project, such as adding new feature or fixing a bug, the better practice is to create a new local branch and merge to *master* at last. In this way, the team can make sure the version in branch *master* is always ready for production and not affected when doing update.
 
 The following commands create a new branch and switch to it.
 ```sh
@@ -41,3 +41,18 @@ git commit -m "write new section for update the project"
 git push --set-upstream origin update_the_project
 ```
 
+Make sure the new feature passes all the tests and works as expected. Then we can merge to branch *master* and put to production.
+```sh
+git chechout master
+git merge update_the_project
+git branch --delete update_the_project
+```
+Each shell does the corresponding work:
+* switch to branch *master*
+* merge *master* and *update_the_project*
+* delete the branch for sanity.
+
+
+## Dealing with Multiple Commits
+
+Sometimes we may have multiple commits in our log and we need to do something with them, such as merging several commits and reset some commit.
