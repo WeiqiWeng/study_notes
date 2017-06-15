@@ -52,7 +52,6 @@ Each shell does the corresponding work:
 * merge *master* and *update_the_project*
 * delete the branch for sanity.
 
-
 ## Dealing with Multiple Commits
 
 Sometimes we may have multiple commits in our log and we need to do something with them, such as merging several commits and reset some commit.
