@@ -52,4 +52,13 @@ Each shell does the corresponding work:
 * merge *master* and *update_the_project*
 * delete the branch for sanity.
 
+If we have serveral changes committed in the sub-branch and we want to merge these commits with the commits in branch *master* at once, we can use
+```sh
+git chechout master
+git merge update_the_project --squash
+```
+.
+
+We can delete the branch as illustrated above.
+
 
