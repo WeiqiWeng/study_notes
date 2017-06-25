@@ -48,16 +48,44 @@ git commit -m "write new section for update the project"
 git push --set-upstream origin update_the_project
 ```
 
-Make sure the new feature passes all the tests and works as expected. Then we can merge to branch *master* and put to production.
+If you do further change after just committed and you don't want to make two separate commites, you can use
+```sh
+git commit ammend
+```
+to append new content to the last commit. Also the command 
+```sh
+git show *commit_id*
+```
+shows the commit message of *commit_id*. 
+
+Make sure the new feature passes all the tests and works as expected. Then we can fetch the latest version of remote branch, merge to branch *master* and finally put to production.
 ```sh
 git chechout master
+git fetch
 git merge update_the_project
+# git merge update_the_project --squash
 git branch --delete update_the_project
 ```
 Each shell does the corresponding work:
 * switch to branch *master*
 * merge *master* and *update_the_project*
+* sometimes you may want to use --squash option to combine your commits into one and then merge into main branch
 * delete the branch for sanity.
+
+You can also use 
+```sh
+git pull 
+```
+instead of 
+```sh
+git fetch 
+```
+followed by
+```sh
+git merge
+```
+.
+It's a shorthand for the latter two commands.
 
 If we have serveral changes committed in the sub-branch and we want to merge these commits with the commits in branch *master* at once, we can use
 ```sh
@@ -68,4 +96,28 @@ git merge update_the_project --squash
 
 We can delete the branch as illustrated above.
 
+## Deal with Multiple Commits
 
+In this case, you've committed several times before you actually do any push or merge. however you find something wrong with the current version and wish to go back. The first thing you need to do is to heck your commit history.
+```sh
+git log --oneline --graph
+```
+will list all the commits from the most recent one to the oldest one. The option --oneline shows each commit with a line of abstraction while --graph shows each branch as graph. On the other hand, 
+```sh
+git reflog
+```
+will show detailed information of each commit. The most useful information is the commit hash ID.
+
+Let's say you are sure that at commit A your code is working. In this way you may want to 
+```sh
+git checkout A
+```
+. In this way, you're cut out from the current branch history. Then you just need to checkout a new branch, update the code again and merge back to main branch. 
+
+A more specific case is that you accidentally delete a file and commit. To reverse it you need to
+```sh
+git reset HEAD file_name.exd
+git checkout -- file_name.exd
+```
+.
+The first line unstages your change related to the file and the second one bring the file back from your branch history.
