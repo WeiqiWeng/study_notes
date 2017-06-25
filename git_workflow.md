@@ -54,7 +54,7 @@ git commit ammend
 ```
 to append new content to the last commit. Also the command 
 ```sh
-git show *commit_id*
+git show commit_id
 ```
 shows the commit message of *commit_id*. 
 
