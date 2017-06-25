@@ -23,6 +23,13 @@ Each shell does the corresponding work:
 * add remote repository from the **url** and name it as origin
 * push to origin and set origin as the upperstream of branch master.
 
+Sometimes you can use 
+```sh
+git remote rename A B
+```
+to rename your remote branch A to B.
+
+
 ## Update the Project
 
 If we want to update the project, such as adding new feature or fixing a bug, the better practice is to create a new local branch and merge to *master* at last. In this way, the team can make sure the version in branch *master* is always ready for production and not affected when doing update.
