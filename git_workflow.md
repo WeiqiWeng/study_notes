@@ -121,4 +121,3 @@ git checkout -- file_name.exd
 ```
 .
 The first line unstages your change related to the file and the second one bring the file back from your branch history.
-
