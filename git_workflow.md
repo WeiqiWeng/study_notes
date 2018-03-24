@@ -34,7 +34,7 @@ to rename your remote branch A to B.
 
 If we want to update the project, such as adding new feature or fixing a bug, the better practice is to create a new local branch and merge to *master* at last. In this way, the team can make sure the version in branch *master* is always ready for production and not affected when doing update.
 
-The following commands create a new branch and switch to it.
+The following commands create a new local branch and switch to it.
 ```sh
 git branch update_the_project
 git checkout update_the_project
@@ -65,12 +65,14 @@ git fetch
 git merge update_the_project
 # git merge update_the_project --squash
 git branch --delete update_the_project
+git push -d update_the_project
 ```
 Each shell does the corresponding work:
 * switch to branch *master*
 * merge *master* and *update_the_project*
 * sometimes you may want to use ```--squash``` option to combine your commits into one and then merge into main branch
-* delete the branch for sanity.
+* delete the local branch for sanity
+* delete the remote branch.
 
 You can also use 
 ```sh
